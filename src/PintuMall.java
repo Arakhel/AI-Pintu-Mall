@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class PintuMall {
     private String orang[][];
@@ -7,13 +8,13 @@ public class PintuMall {
 
     Scanner sc = new Scanner(System.in);
 
-    public PintuMall() {
+    public PintuMall() throws InterruptedException {
         orang = new String[baris][kolom];
         for (int i = 0; i < baris; i++) {
             for (int j = 0; j < kolom; j++) {
-                System.out.println("Apakah ada orang? (p/-)");
+                System.out.println("Apakah ada orang dalam jarak 10 m? (y/t)");
                 orang[i][j] = sc.next();
-                if (orang[i][j].equals("p")) {
+                if (orang[i][j].equals("y")) {
                     buka();
                 } else {
                     tutup();
@@ -34,8 +35,13 @@ public class PintuMall {
         return r.toString();
     }
 
-    private void buka() {
-        System.out.println("Buka Pintu ada orang");
+    private void buka() throws InterruptedException {
+        try {
+            System.out.println("Buka Pintu ada orang");
+            TimeUnit.SECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void tutup() {
