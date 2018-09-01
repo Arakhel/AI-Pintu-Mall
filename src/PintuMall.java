@@ -37,14 +37,15 @@ public class PintuMall {
 
     private void buka() throws InterruptedException {
         try {
-            System.out.println("Buka Pintu ada orang");
-            TimeUnit.SECONDS.sleep(10);
+            System.out.println("Buka Pintu, ada orang");
+            TimeUnit.SECONDS.sleep(3);
+            System.out.println("Tutup Pintu, orangnya sudah lewat");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     private void tutup() {
-        System.out.println("Tutup Pintu baru gak ada orang");
+        System.out.println("Tidak terbuka, baru tidak ada orang");
     }
 }
