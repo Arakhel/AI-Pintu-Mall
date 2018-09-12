@@ -8,14 +8,36 @@ public class PintuMall {
 
     Scanner sc = new Scanner(System.in);
 
-    public PintuMall() throws InterruptedException {
+    public PintuMall(){
         orang = new String[baris][kolom];
+
         for (int i = 0; i < baris; i++) {
             for (int j = 0; j < kolom; j++) {
-                System.out.println("Apakah ada orang dalam jarak 10 m? (y/t)");
-                orang[i][j] = sc.next();
+                orang[i][j]=" ";
+            }
+        }
+
+        orang[0][0]="y";
+        orang[0][1]="y";
+        orang[0][3]="y";
+        orang[0][4]="y";
+        orang[0][7]="y";
+        orang[0][9]="y";
+    }
+
+    void Move() throws InterruptedException {
+        System.out.println(toString());
+        for (int i = 0; i < baris; i++) {
+            for (int j = 0; j < kolom-1; j++) {
                 if (orang[i][j].equals("y")) {
+                    System.out.println("Ada orang dalam jarak 10 m\n");
                     buka();
+                    if(orang[i][j+1].equals("y")){
+                        System.out.println("Ada orang lagi dalam jarak 10 m, tunggu 3 detik lagi\n");
+                        TimeUnit.SECONDS.sleep(3);
+                        j+=1;
+                    }
+                    System.out.println("Tutup Pintu, orangnya sudah lewat\n");
                 } else {
                     tutup();
                 }
@@ -37,15 +59,20 @@ public class PintuMall {
 
     private void buka() throws InterruptedException {
         try {
-            System.out.println("Buka Pintu, ada orang");
+            System.out.println("Buka Pintu\n");
+            System.out.println("Tunggu 3 detik\n");
             TimeUnit.SECONDS.sleep(3);
-            System.out.println("Tutup Pintu, orangnya sudah lewat");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     private void tutup() {
-        System.out.println("Tidak terbuka, baru tidak ada orang");
+        try {
+            System.out.println("Tidak terbuka, baru tidak ada orang\n");
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
