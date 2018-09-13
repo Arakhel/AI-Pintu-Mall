@@ -1,12 +1,9 @@
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class PintuMall {
     private String orang[][];
     private int baris = 1;
     private int kolom = 10;
-
-    Scanner sc = new Scanner(System.in);
 
     public PintuMall(){
         orang = new String[baris][kolom];
@@ -30,10 +27,10 @@ public class PintuMall {
         for (int i = 0; i < baris; i++) {
             for (int j = 0; j < kolom-1; j++) {
                 if (orang[i][j].equals("y")) {
-                    System.out.println("Ada orang dalam jarak 10 m\n");
+                    System.out.println("Ada orang dalam jarak 3 m\n");
                     buka();
                     if(orang[i][j+1].equals("y")){
-                        System.out.println("Ada orang lagi dalam jarak 10 m, tunggu 3 detik lagi\n");
+                        System.out.println("Ada orang lagi dalam jarak 3 m, tunggu 3 detik lagi\n");
                         TimeUnit.SECONDS.sleep(3);
                         j+=1;
                     }
